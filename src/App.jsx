@@ -30,6 +30,7 @@ const AdminRoutes = () => {
       <Route path="/Dashboard" element={<Dashboard />} />
       <Route path="/inventaris" element={<Inventaris />} />
       <Route path="/gebruikers" element={<Gebruikers />} />
+
     </Routes>
   );
 };
