@@ -50,7 +50,7 @@ const Inventaris = () => {
           </h1>
           <Link
             to={`/admin/Inventaris/toevoegen`}
-            className="w-48 rounded-xl bg-Groen h-12 items-center justify-center flex gap-2 p-2"
+            className="w-48 rounded-xl bg-Groen h-12 items-center justify-center flex gap-2 p-2 hover:bg-lime-400"
           >
             <MdOutlineAddCircle className="flex size-6" />
             <h2 className="font-semibold">Product Toevoegen</h2>
@@ -62,7 +62,7 @@ const Inventaris = () => {
             <breadcrumb-item>Inventaris</breadcrumb-item>
           </breadcrumb>
           <div className="items-center flex h-12 gap-4">
-            <div className="items-center flex h-full border-2 w-56 gap-2 rounded-xl border-Lichtgrijs">
+            <div className="items-center flex h-full border-2 w-56 gap-2 rounded-xl border-Lichtgrijs hover:border-black">
               <IoSearchOutline className="ml-2 size-6" />
               <input
                 type="search"
