@@ -113,7 +113,7 @@ const Inventaris = () => {
                 <th scope="col" className=" ">
                   Gepauzeerd
                 </th>
-                <th scope="col" className="">
+                <th scope="col" className="text-right">
                   Actie
                 </th>
               </tr>

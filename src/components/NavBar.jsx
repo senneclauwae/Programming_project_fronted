@@ -7,7 +7,7 @@ import { FaShoppingCart } from "react-icons/fa";
 
 const NavBar = () => {
   return (
-    <nav className="w-100wh border flex items-center gap-7">
+    <nav className="border flex items-center gap-7 flex-grow">
       <a href="/">
         <header className="flex w-max h-20 gap-x-3 items-center ">
           <img
@@ -24,8 +24,8 @@ const NavBar = () => {
         </header>
       </a>
       <IoIosMenu className="flex h-full size-8 text-Grijs" />
-      <div className="flex space-between items-center justify-end">
-        <div className="flex w-96 h-12 border items-center gap-1 grow">
+      <div className="flex">
+        <div className="flex flex-grow h-12 border items-center gap-1 ">
           <IoSearchOutline className="size-7 text-Grijs ml-2" />
           <input
             type="search"
@@ -35,7 +35,7 @@ const NavBar = () => {
             className="h-full w-full  rounded-lg border-Lichtgrijs p-2"
           />
         </div>
-        <FaUser className="flex h-full size-8 text-Grijs " />
+        <FaUser className="flex h-full size-8 text-Grijs" />
         <FaShoppingCart className="flex h-full size-8 text-Grijs " />
       </div>
     </nav>
