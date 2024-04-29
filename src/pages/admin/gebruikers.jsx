@@ -34,9 +34,17 @@ const Gebruikers = () => {
       });
   }, []);
 
+  const handleName = (email) => {
+    let parts = email.split("@");
+    let name = parts[0];
+    return name;
+  }
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
+
+
 
   const filteredGebruikers = gebruikers.filter(
     (gebruiker) =>
@@ -119,7 +127,7 @@ const Gebruikers = () => {
                         <FaRegUserCircle className="size-12" />
                       </div>
                       <h2 className="flex flex-col -space-y-1">
-                        <span className="text-base text-Grijs font-semibold">Senne Clauwaert</span>
+                        <span className="text-base text-Grijs font-semibold">{handleName(gebruiker.email)}</span>
                         <span className="text-base text-Lichtgrijs font-light">{`${gebruiker.email}`}</span>
                       </h2>
                     </div>
