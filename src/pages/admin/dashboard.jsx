@@ -4,13 +4,18 @@ import { CiBoxes } from "react-icons/ci";
 
 const Dashboard = () => {
   return (
-    <content>
-      <main className="flex-grow w-100 p-5">
-        <h1 className=" flex text-3xl font-bold w-40 border-b justify-center">Dashboard</h1>
-        <breadcrumb className="item flex items-center gap-2 mt-5 ml-5">
-          <RxDashboard className="text-rood" />
-          <breadcrumb-item>Dashboard</breadcrumb-item>
-        </breadcrumb>
+    <content className="top-0 flex-grow">
+      <main className="flex-grow p-10">
+        <h1 className=" flex text-3xl font-bold w-40 border-b justify-center">
+          Dashboard
+        </h1>
+
+        <div className="flex items-center gap-2 mt-10 ml-5  justify-between">
+          <breadcrumb className="flex items-center gap-2">
+            <RxDashboard className="text-rood" />
+            <breadcrumb-item>Dashboard</breadcrumb-item>
+          </breadcrumb>
+        </div>
         <div>
           <ul className="flex h-12 items-center ml-20 mt-8">
             <li className="flex w-80 h-full items-center border-r gap-3 ml-5">

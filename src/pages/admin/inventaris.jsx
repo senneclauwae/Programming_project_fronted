@@ -69,7 +69,7 @@ const Inventaris = () => {
                 name=""
                 id=""
                 placeholder="Zoek hier"
-                className="h-full w-full rounded-xl"
+                className="h-full w-full rounded-xl p-2"
                 value={searchQuery}
                 onChange={handleSearch}
               />

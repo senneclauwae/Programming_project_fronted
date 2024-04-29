@@ -41,7 +41,7 @@ const Gebruikers = () => {
   const filteredGebruikers = gebruikers.filter(
     (gebruiker) =>
       gebruiker.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      gebruiker.gebruikerID.toLowerCase().includes(searchQuery.toLowerCase())
+      String(gebruiker.gebruikerID).toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -57,14 +57,14 @@ const Gebruikers = () => {
             <breadcrumb-item>Gebruikers</breadcrumb-item>
           </breadcrumb>
           <div className="items-center flex h-12 gap-4">
-            <div className="items-center flex h-full border-2 w-56 gap-2 rounded-xl border-Lichtgrijs">
+            <div className="items-center flex h-full border-2 w-56 gap-1 rounded-xl border-Lichtgrijs">
               <IoSearchOutline className="ml-2 size-6" />
               <input
                 type="search"
                 name=""
                 id=""
                 placeholder="Zoek hier"
-                className="h-full w-full rounded-xl"
+                className="h-full w-full rounded-xl p-2"
                 value={searchQuery}
                 onChange={handleSearch}
               />
@@ -109,17 +109,18 @@ const Gebruikers = () => {
             </thead>
             <tbody>
               {filteredGebruikers.map((gebruiker) => (
-                <tr key={gebruiker.gebruikerID} className="h-16">
+                <tr key={gebruiker.gebruikerID} className="h-16 ">
                   <td className="flex justify-center items-center h-full">
                     {gebruiker.gebruikerID}
                   </td>
                   <td className="">
-                    <div className="flex items-center justify-start gap-2 overflow-x-hidden">
-                      <div className="h-12 w-12 overflow-hidden rounded-full items-center">
-                        <FaRegUserCircle className="size-11" />
+                    <div className="flex items-center justify-start h-full gap-2 overflow-x-hidden">
+                      <div className="rounded-full items-center text-Grijs">
+                        <FaRegUserCircle className="size-12" />
                       </div>
                       <h2 className="flex flex-col -space-y-1">
-                        <span className="text-base text-black font-semibold">{`${gebruiker.email}`}</span>
+                        <span className="text-base text-Grijs font-semibold">Senne Clauwaert</span>
+                        <span className="text-base text-Lichtgrijs font-light">{`${gebruiker.email}`}</span>
                       </h2>
                     </div>
                   </td>
