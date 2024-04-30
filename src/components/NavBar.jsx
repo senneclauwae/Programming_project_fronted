@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ehbLogo from "../assets/ehb-logo.jpg";
 import { IoIosMenu } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
@@ -7,10 +7,39 @@ import { FaShoppingCart } from "react-icons/fa";
 
 
 const NavBar = () => {
+
+  // For clicking inside and outside of the box --->>
   const [clicked, setClicked] = useState(false);
+  const node = useRef();
+
+  const handleClickOutside = e => {
+    if (node.current.contains(e.target)) {
+      // inside click
+      return;
+    }
+    // outside click 
+    setClicked(false);
+  };
+
+  useEffect(() => {
+    if (clicked) {
+      // add when mounted
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      // return function to be called when unmounted
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      // cleanup
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [clicked]);
+
   const handleButtonClick = () => {
     setClicked(!clicked);
   }
+  //<<--
+
   return (
   <>
     <nav className="border flex items-center gap-7 flex-grow">
@@ -31,19 +60,19 @@ const NavBar = () => {
       </a>
 
       {/* Categorie button + pop up */}
-      <div className="relative">
+      <div className="relative" ref={node}>
         <button onClick={handleButtonClick}>
-          <IoIosMenu className="flex h-full size-8 text-Grijs" />
+          <IoIosMenu className="flex h-full size-12 text-black hover:bg-gray-200 p-2" />
           {clicked && (
-            <div className="origin-top-right absolute -right-1/2 transform translate-x-1/2 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 text-center">
+            <div className="origin-top-right absolute -right-1/2 transform translate-x-1/2 mt-4 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 text-center">
               <h3 className='text-lg'>Categoriën</h3>
-              <ul className=''>
-                <li>Audio</li>
-                <li>Video</li>
-                <li>XR</li>
-                <li>Tools</li>
-                <li>Belichting</li>
-                <li>Varia</li>
+              <ul>
+                <li className='hover:bg-blue-500 hover:text-white'>Audio</li>
+                <li className='hover:bg-blue-500 hover:text-white'>Video</li>
+                <li className='hover:bg-blue-500 hover:text-white'>XR</li>
+                <li className='hover:bg-blue-500 hover:text-white'>Tools</li>
+                <li className='hover:bg-blue-500 hover:text-white'>Belichting</li>
+                <li className='hover:bg-blue-500 hover:text-white'>Varia</li>
               </ul>
             </div>
           )}
@@ -51,7 +80,7 @@ const NavBar = () => {
       </div>
       
       <div className="flex">
-        <div className="flex flex-grow h-12 border items-center gap-1 ">
+        <div className="flex flex-grown h-12 border items-center gap-1 mr-5">
           <IoSearchOutline className="size-7 text-Grijs ml-2" />
           <input
             type="search"
@@ -61,8 +90,8 @@ const NavBar = () => {
             className="h-full w-full  rounded-lg border-Lichtgrijs p-2"
           />
         </div>
-        <FaUser className="flex h-full size-8 text-Grijs" />
-        <FaShoppingCart className="flex h-full size-8 text-Grijs " />
+        <FaUser className="flex h-full size-12 text-black hover:bg-gray-200 p-2" />
+        <FaShoppingCart className="flex h-full size-12 text-black hover:bg-gray-200 p-2 mx-5" />
       </div>
     </nav>
   </>
