@@ -62,7 +62,7 @@ const NavBar = () => {
       {/* Categorie button + pop up */}
       <div className="relative" ref={node}>
         <button onClick={handleButtonClick}>
-          <IoIosMenu className="flex h-full size-12 text-black hover:bg-gray-200 p-2" />
+          <IoIosMenu className="flex h-full size-12 rounded-md text-black hover:bg-gray-200 p-2" />
           {clicked && (
             <div className="origin-top-right absolute -right-1/2 transform translate-x-1/2 mt-4 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 text-center">
               <h3 className='text-lg'>Categoriën</h3>
@@ -81,17 +81,17 @@ const NavBar = () => {
       
       <div className="flex">
         <div className="flex flex-grown h-12 border items-center gap-1 mr-5">
-          <IoSearchOutline className="size-7 text-Grijs ml-2" />
+          <IoSearchOutline className="size-8 rounded-md text-black hover:bg-gray-200 p-1 ml-2" />
           <input
             type="search"
             name="search-bar"
             id=""
             placeholder="Zoek hier..."
-            className="h-full w-full  rounded-lg border-Lichtgrijs p-2"
+            className="h-full w-full  rounded-lg border-Lichtgrijs p-2 text-black"
           />
         </div>
-        <FaUser className="flex h-full size-12 text-black hover:bg-gray-200 p-2" />
-        <FaShoppingCart className="flex h-full size-12 text-black hover:bg-gray-200 p-2 mx-5" />
+        <FaUser className="flex h-full size-12 rounded-md text-black hover:bg-gray-200 p-2" />
+        <FaShoppingCart className="flex h-full size-12 rounded-md text-black hover:bg-gray-200 p-2 mx-5" />
       </div>
     </nav>
   </>
