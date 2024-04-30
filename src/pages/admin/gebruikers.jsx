@@ -83,12 +83,12 @@ const Gebruikers = () => {
             </div>
           </div>
         </div>
-        <div className="flex w-full h-screen">
+        <div className="flex w-full h-auto">
           <div>{loading && <Spinner />}</div>
-          <table className="w-full h-screen">
+          <table className="w-full h-auto">
             <thead className="w-full h-16">
               <tr className="text-sm text-Lichtgrijs font-thin">
-                <th scope="col" className=" px-2 ">
+                <th scope="col" className="text-center">
                   Nr
                 </th>
                 <th
@@ -97,7 +97,7 @@ const Gebruikers = () => {
                 >
                   Naam/email
                 </th>
-                <th scope="col" className="text-left">
+                <th scope="col" className="text-left ">
                   Titel
                 </th>
                 <th
@@ -133,7 +133,7 @@ const Gebruikers = () => {
                     </div>
                   </td>
                   <td className="">
-                    <div className="flex w-full border h-8 bg-slate-300 items-center justify-center rounded-md">
+                    <div className="flex w-3/5 border h-10 bg-slate-300 items-center justify-center rounded-md">
                       {gebruiker.titel === "student" ? (
                         <p>student</p>
                       ) : (

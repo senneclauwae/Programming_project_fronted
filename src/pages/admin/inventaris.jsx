@@ -16,14 +16,29 @@ const Inventaris = () => {
   const [productModellen, setProductModellen] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = ([]);
 
   useEffect(() => {
+    
     setLoading(true);
+    // fetch productmodellen
     axios
       .get("http://localhost:8080/productmodel")
       .then((response) => {
         setProductModellen(response.data);
-        console.log(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+        setLoading(false);
+      });
+  
+  // Fetch categories
+  axios
+      .get("http://localhost:8080/categorie")
+      .then((response) => {
+        setCategories(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -32,14 +47,19 @@ const Inventaris = () => {
       });
   }, []);
 
+
+
   const handleSearch = (event) => {
     setSearchQuery(event.target.value);
   };
 
   const filteredProductModellen = productModellen.filter((model) =>
     model.productModelNaam.toLowerCase().includes(searchQuery.toLowerCase())||
-    model.productModelMerk.toLowerCase().includes(searchQuery.toLowerCase())
+    model.productModelMerk.toLowerCase().includes(searchQuery.toLowerCase())||
+    String(model.productModelNr).toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  
 
   return (
     <content className="top-0 flex-grow">
@@ -74,15 +94,17 @@ const Inventaris = () => {
                 onChange={handleSearch}
               />
             </div>
-            <div className="flex h-full border-2 items-center justify-center gap-3 rounded-xl border-Lichtgrijs w-28 hover:cursor-pointer">
+            <div className="flex h-full border-2 rounded-xl items-end justify-center border-Lichtgrijs w-28 hover:cursor-pointer">
+            <div className="flex h-full items-center justify-center gap-2">
               <FaFilter className="size-4 text-black-600" />
               <h2 className="text-xl font-semibold">Filter</h2>
+            </div>
             </div>
           </div>
         </div>
         <div className="flex w-full h-screen">
           <div>{loading && <Spinner />}</div>
-          <table className="w-full h-screen">
+          <table className="w-full border ">
             <thead className="w-full h-16">
               <tr className="text-sm text-Lichtgrijs font-thin">
                 <th scope="col" className=" px-2 ">
@@ -121,7 +143,7 @@ const Inventaris = () => {
             <tbody>
               {filteredProductModellen.map((model) => (
                 <tr key={model.productModelNr} className="h-16">
-                  <td className="flex justify-center items-center h-full">
+                  <td className="text-center h-full">
                     {model.productModelNr}
                   </td>
                   <td className="">
@@ -140,8 +162,9 @@ const Inventaris = () => {
                     </div>
                   </td>
                   <td className="">
-                    <div className="flex w-full border h-8 bg-slate-300 items-center justify-center rounded-md ">
-                      Video
+                    <div className="flex w-28  h-10 bg-slate-300 items-center justify-center rounded-md">
+                      <h2 className="text-lg">{`${model.categorie.categorieNaam.charAt(0).toUpperCase()}${model.categorie.categorieNaam.slice(1)}`}
+                      </h2>
                     </div>
                   </td>
                   <td className="">{model.beschikbaar}</td>
