@@ -14,12 +14,15 @@ const App = () => {
 
   return (
     <div className="flex">
-      {!isAdminRoute && <NavBar />}
-      {isAdminRoute && <AdminSideBar />}
+      
+        {isAdminRoute ? <AdminSideBar /> : <NavBar />}
+        
+     
       <Routes>
         <Route path="/admin/*" element={<AdminRoutes />} />
         <Route path="/" element={<Home />} />
       </Routes>
+      
     </div>
   );
 };
